@@ -19,6 +19,7 @@ public class RegisterPage extends Util{
     private By _registerSubmitButton = By.id("//input[@id=\"register-button\"]");
 
     public void verifyUserIsOnRegistrationPage(){
+
         Assert.assertTrue(driver.getCurrentUrl().contains("registerPage"));
     }
     public void userEnterRegistrationDetails(){
