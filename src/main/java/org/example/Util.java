@@ -1,12 +1,11 @@
 package org.example;
-import org.apache.commons.io.FileUtils;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,6 +25,7 @@ public class Util extends BasePage {
     }
 
     public static void clickOnElement(By by) {
+
         driver.findElement(by).click();
     }
 
@@ -49,6 +49,7 @@ public class Util extends BasePage {
     }
 
     public static void assertURL(String text) {
+
         Assert.assertTrue(driver.getCurrentUrl().contains(text));
     }
 
@@ -57,25 +58,25 @@ public class Util extends BasePage {
         select.selectByVisibleText(text);
     }
 
-    ////
-//    public static void takeScreenShot(String s) {
-//        File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-//        //The below method will save the screen shot in d drive with test method name
-//        try {
-//            FileUtils.copyFile(scrFile, new File(+methodName + ".png"));
-//            System.out.println("**Placed screen shot in " + filePath + " **");
-//        } catch (IOException e)
-//        {
-//            e.printStackTrace();
-//        }
-//    }
-    public static void takeScreenShot(String fileName) {
-        File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+
+   public static void takeScreenShot(String s) {
+       File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         //The below method will save the screen shot in d drive with test method name
-        try {
-            FileUtils.copyFile(scrFile, new File("src\\ScreenShot" + fileName + ".jpg"));
-        } catch (IOException e) {
+      try {
+          FileUtil.copyFile(scrFile, new File(+methodName + ".png"));
+          System.out.println("**Placed screen shot in " + filePath + " **");
+      } catch (IOException e)
+        {
             e.printStackTrace();
         }
+   }
+    public static void takeScreenShot(String fileName) {
+        File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        The below method will save the screen shot in d drive with test method name
+        try {
+            FileUtil.copyFile(scrFile, new File("src\\ScreenShot" + fileName + ".jpg"));
+        } catch (IOException e) {
+            e.printStackTrace();
+       }
     }
 }
